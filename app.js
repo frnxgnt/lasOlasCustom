@@ -1,3 +1,4 @@
+// Variables globales
 let enero = "";
 let febrero = "";
 let marzo = "";
@@ -13,6 +14,7 @@ let diciembre = "";
 let resultado;
 let mes = 1;
 
+// Funcion matematica
 function promedio() {
   resultado =
     parseInt(
@@ -29,9 +31,10 @@ function promedio() {
         noviembre +
         diciembre
     ) / 12;
-  alert(`El promedio anual del nivel del mar fue de ${resultado} mts`);
+  alert(`El promedio anual del nivel del rio fue de ${resultado} mts`);
 }
 
+// Funcion utilizando ciclo y condicional para cargar los datos
 function ingresandoValores(mes) {
   for (mes >= 1; mes <= 12; mes++) {
     if (mes == 1) {
@@ -64,6 +67,7 @@ function ingresandoValores(mes) {
   }
 }
 
+// Funcion para reinicar la páguna
 function reiniciarPag() {
   location.reload();
 }
