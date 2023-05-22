@@ -1,79 +1,54 @@
-// Variables globales
-let enero = "";
-let febrero = "";
-let marzo = "";
-let abril = "";
-let mayo = "";
-let junio = "";
-let julio = "";
-let agosto = "";
-let septiembre = "";
-let octubre = "";
-let noviembre = "";
-let diciembre = "";
-let resultado;
-let mes = 1;
-
-// Funcion matematica
-function promedio() {
-  resultado =
-    parseInt(
-      enero +
-        febrero +
-        marzo +
-        abril +
-        mayo +
-        junio +
-        julio +
-        agosto +
-        septiembre +
-        octubre +
-        noviembre +
-        diciembre
-    ) / 12;
-  alert(`El promedio anual del nivel del rio fue de ${resultado} mts`);
-}
-
-// Funcion utilizando ciclo y condicional para cargar los datos
-function ingresandoValores(mes) {
-  for (mes >= 1; mes <= 12; mes++) {
-    if (mes == 1) {
-      enero = parseInt(prompt("Ingrese nivel Enero"));
-    } else if (mes == 2) {
-      febrero = parseInt(prompt("Ingrese nivel Febrero"));
-    } else if (mes == 3) {
-      marzo = parseInt(prompt("Ingrese nivel Marzo"));
-    } else if (mes == 4) {
-      abril = parseInt(prompt("Ingrese nivel Abril"));
-    } else if (mes == 5) {
-      mayo = parseInt(prompt("Ingrese nivel Mayo"));
-    } else if (mes == 6) {
-      junio = parseInt(prompt("Ingrese nivel Junio"));
-    } else if (mes == 7) {
-      julio = parseInt(prompt("Ingrese nivel Julio"));
-    } else if (mes == 8) {
-      agosto = parseInt(prompt("Ingrese nivel Agosto"));
-    } else if (mes == 9) {
-      septiembre = parseInt(prompt("Ingrese nivel Septiembre"));
-    } else if (mes == 10) {
-      octubre = parseInt(prompt("Ingrese nivel Octubre"));
-    } else if (mes == 11) {
-      noviembre = parseInt(prompt("Ingrese nivel Noviembre"));
-    } else if (mes == 12) {
-      diciembre = parseInt(prompt("Ingrese nivel Diciembre"));
-    } else {
-      alert("Mes incorrecto");
-    }
+class guitar {
+  constructor(marca, modelo, precio) {
+    this.marcaGuitar = marca;
+    this.modeloGuitar = modelo;
+    this.precioGuitar = precio;
   }
 }
 
-// Funcion para reinicar la páguna
-function reiniciarPag() {
-  location.reload();
+function agregarGuitar() {
+  let marca = prompt("Ingrese marca de la guitarra");
+  let modelo = prompt("Ingrese modelo de la guitarra");
+  let precio = parseInt(prompt("Ingrese precio de la guitarra"));
+  const newGuitar = new guitar(marca, modelo, precio);
+  arrayCarrito.push(newGuitar);
+  alert("Producto añadido al carro de compras");
 }
 
-let botonReiniciar = document.getElementById("boton-reiniciar");
-botonReiniciar.addEventListener("click", reiniciarPag);
+function verCarritoCompra() {
+  arrayCarrito.forEach((producto) => {
+    alert(
+      `Usted elegio ${producto.marcaGuitar} modelo ${producto.modeloGuitar} por el valor de ${producto.precioGuitar}`
+    );
+  });
+}
 
-ingresandoValores(mes);
-promedio();
+function finalizarCompra() {
+  const totalCompra = arrayCarrito.reduce((acc, prod) => acc + prod.precioGuitar, 0);
+  alert(`El total de su compra es ${totalCompra}`);
+  console.log(totalCompra);
+}
+
+let arrayCarrito = [];
+
+let opcion = prompt(
+  "Elija una opcion: \n 1: Cargar productos \n 2: Ver carrito \n 3: Finalizar compra \n 4: Salir"
+);
+
+while (opcion !== "4") {
+  if (opcion === "1") {
+    agregarGuitar();
+  }
+  if (opcion === "2") {
+    verCarritoCompra();
+  }
+  if (opcion === "3") {
+    finalizarCompra();
+  }
+  opcion = prompt(
+    "Vuelva a elegir una opción: \n 1: Cargar productos \n 2: Ver carrito \n 3: Finalizar compra \n 4: Salir"
+  );
+}
+
+
+alert("Gracias por su compra")
